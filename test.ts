@@ -1,5 +1,5 @@
 import * as test from "tape-async";
-import { enforcePermissions, isActionAllowed } from "./index";
+import { enforcePermissions, isActionAllowed } from "./lib/index";
 import log from "roarr";
 
 function isFunction(o) {
