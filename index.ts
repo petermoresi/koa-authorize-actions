@@ -1,19 +1,19 @@
 /**
  * Check if given action is in the path of the given action pattern
  * @param action Action to check
- * @param allowedActions List of action patterns to check against
+ * @param allowActions List of action patterns to check against
  */
 export function isActionAllowed(
   action: string,
-  allowedActions: Array<string>
+  allowActions: Array<string>
 ): boolean {
   if (action == null) throw "action must have a value";
-  if (allowedActions == null) return false;
-  if (allowedActions.length === 0) return false;
+  if (allowActions == null) return false;
+  if (allowActions.length === 0) return false;
   var actionParts = action.split("/");
 
-  for (var index in allowedActions) {
-    let item = allowedActions[index];
+  for (var index in allowActions) {
+    let item = allowActions[index];
     var itemParts = item.split("/");
     let result = true;
     for (var partIndex in itemParts) {
@@ -61,15 +61,15 @@ export function enforcePermissions(
 
     ctx.assert(user, 500, "ctx.user is not defined");
 
-    const { allowedActions = [] } = user;
+    const { allowActions = [] } = user;
 
     const user_id = user.id;
     ctx.log.debug(
-      { user: ctx.user, actionToCheck, allowedActions },
+      { user: ctx.user, actionToCheck, allowActions },
       "enforce permission"
     );
 
-    let isAllowed = isActionAllowed(actionToCheck, allowedActions);
+    let isAllowed = isActionAllowed(actionToCheck, allowActions);
 
     ctx.log.trace({ user_id, action, isAllowed }, "action allowed?");
 
