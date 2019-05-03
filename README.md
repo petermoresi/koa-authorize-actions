@@ -1,5 +1,6 @@
 # koa-authorize-actions
-A simple koa v2 middleware.
+
+Koa v2 middleware for enforcing allowed actions.
 
 ## ctx.user
 
