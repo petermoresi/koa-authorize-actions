@@ -8,10 +8,10 @@ This library depends on your application setting `ctx.user`.
 Your ctx.user should have a property name `allowedActions`. This should be an array of actions to permit.
 
 ```js
-ctx.user.allowActions = ["*"]
+ctx.user.allowedActions = ["*"]
 ```
 
 
 ```js
-ctx.user.allowActions = ["read/*", "write/*"]
+ctx.user.allowedActions = ["read/*", "write/*"]
 ```
