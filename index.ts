@@ -1,5 +1,3 @@
-  import mm from "micromatch";
-
 /**
  * Check if given action is in the path of the given action pattern
  * @param action Action to check
@@ -17,16 +15,20 @@ export function isActionAllowed(
   for (var index in allowedActions) {
     let item = allowedActions[index];
     var itemParts = item.split("/");
-    let result;
+    let result = true;
     for (var partIndex in itemParts) {
       if (
         itemParts[partIndex] === actionParts[index] ||
-        "*" === actionParts[index]
+        "*" === itemParts[partIndex] ||
+        "**" === itemParts[partIndex]
       ) {
         result = true;
         break;
       }
-      if (itemParts[partIndex] !== actionParts[index]) result = false;
+      if (itemParts[partIndex] !== actionParts[index]) {
+        result = false;
+        break;
+      }
     }
 
     // did we find a completely true result?
