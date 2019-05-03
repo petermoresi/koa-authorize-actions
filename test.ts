@@ -71,7 +71,8 @@ test("Testing passed values exist", t => {
 });
 
 test("Testing return is correct", t => {
-  t.plan(5);
+  t.plan(6);
+  t.ok(isActionAllowed("view/user", ["*"]), "Should return true");
   t.ok(isActionAllowed("view/user", ["view/*"]), "Should return true");
   t.ok(isActionAllowed("view/user/profile", ["view/**"]), "Should return true");
   t.notOk(
@@ -152,7 +153,6 @@ test("Testing enforcePermissions with a function action", async t => {
 
   try {
     await enforcePermissionsConst(ctx, async () => {});
-  } catch (e) {
-    t.equal(e.message, "Action is not allowed!");
-  }
+    t.ok(true);
+  } catch (e) {}
 });
