@@ -14,7 +14,7 @@ var { enforcePermissions } = require("koa-authorize-actions");
 var app = new Koa();
 
 app.use( ctx => {
-  // determine what actions a user by querying a database instead.
+  // determine what actions a user can do by querying a database instead.
   ctx.user.allowActions = ["read/*", "write/*"]
 })
 
