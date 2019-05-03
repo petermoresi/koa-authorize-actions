@@ -29,12 +29,12 @@ function createContext({ includeUser = false, includeAllowedActions = false }) {
   };
   if (includeUser) {
     ctx.user = {
-      allowedActions: []
+      allowActions: []
     };
   }
 
   if (includeAllowedActions) {
-    ctx.user.allowedActions = ["*"];
+    ctx.user.allowActions = ["*"];
   }
   return ctx;
 }
